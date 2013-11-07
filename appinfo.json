@@ -1,0 +1,28 @@
+{
+  "uuid": "5fae40c0-913f-4b11-b2a6-67ccae07df18",
+  "shortName": "Binary",
+  "longName": "Binary Watchface",
+  "companyName": "Noah",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": [
+    {
+        "type": "png-trans",
+        "name": "CHARGE",
+        "file": "images/charge.png"
+    },
+    {
+        "type": "png-trans",
+        "name": "PHONE",
+        "file": "images/phone.png"
+    }
+    ]
+  }
+}
