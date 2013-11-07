@@ -1,0 +1,6 @@
+This is a binary watchface for Pebble OS 2.0.
+
+The Pebble's battery status is shown in the top left and if it is connected
+to a phone, a phone icon is shown in the top right.
+
+If you leave the phone behind the watch vibrates to remind you!
