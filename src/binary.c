@@ -13,7 +13,7 @@ static GBitmap *phone_bitmap;
 static BitmapLayer *phone_layer;
 bool connectionStatus = false;
 
-char* days_of_week[7] = {"Sun,", "Mon,", "Tues,", "Wed,", "Thu,", "Fri,", "Sat,"};
+char* days_of_week[7] = {"Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"};
 char* months_of_year[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
 void update_proc(Layer *layer, GContext *ctx) {
@@ -62,7 +62,7 @@ void update_proc(Layer *layer, GContext *ctx) {
     day_string[0] = '0' + day_int/10;
     memset(day_info, 0, sizeof(day_info));
     strcpy(day_info, days_of_week[mTime->tm_wday]);
-    strcat(day_info, " ");
+    strcat(day_info, ", ");
     strcat(day_info, months_of_year[mTime->tm_mon]);
     strcat(day_info, " ");
     strcat(day_info, day_string);
