@@ -51,9 +51,6 @@ void update_proc(Layer *layer, GContext *ctx) {
     }
 
     unsigned int min = mTime->tm_min;
-    if (1 == min) {
-      vibes_double_pulse();
-    }
     for(i = 0; i < 6; i++)
     {
         if(min % 2) {
@@ -73,6 +70,10 @@ void update_proc(Layer *layer, GContext *ctx) {
             graphics_draw_circle(ctx, GPoint(128-23*i, 131), RADIUS);
 	}
         sec /= 2;
+    }
+
+    if (0 == mTime->tm_min && 0 == mTime->tm_sec) {
+      vibes_double_pulse();
     }
 
     int day_int = mTime->tm_mday;
