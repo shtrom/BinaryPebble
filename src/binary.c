@@ -40,6 +40,9 @@ void update_proc(Layer *layer, GContext *ctx) {
         hour /= 2;
     }
     unsigned int min = mTime->tm_min;
+    if (1 == min) {
+      vibes_double_pulse();
+    }
     for(i = 0; i < 6; i++)
     {
         if(min % 2)
@@ -217,3 +220,5 @@ int main(void) {
   app_event_loop();
   deinit();
 }
+
+/* vim: sw=2 */
