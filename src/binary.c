@@ -62,10 +62,10 @@ void update_proc(Layer *layer, GContext *ctx) {
     day_string[0] = '0' + day_int/10;
     memset(day_info, 0, sizeof(day_info));
     strcpy(day_info, days_of_week[mTime->tm_wday]);
-    strcat(day_info, ", ");
-    strcat(day_info, months_of_year[mTime->tm_mon]);
     strcat(day_info, " ");
     strcat(day_info, day_string);
+    strcat(day_info, " ");
+    strcat(day_info, months_of_year[mTime->tm_mon]);
     text_layer_set_text(day_layer, day_info);
 }
 
