@@ -20,42 +20,61 @@ void update_proc(Layer *layer, GContext *ctx) {
     graphics_context_set_stroke_color(ctx, GColorWhite);
     graphics_context_set_fill_color(ctx, GColorWhite);
     int i = 0;
-    for(i = 0; i < 4; i++)
-        graphics_draw_circle(ctx, GPoint(23+33*i, 37), RADIUS);
-    for(i = 0; i < 6; i++)
-        graphics_draw_circle(ctx, GPoint(13+23*i, 84), RADIUS);
-    for(i = 0; i < 6; i++)
-        graphics_draw_circle(ctx, GPoint(13+23*i, 131), RADIUS);
     time_t time_value = time(NULL);
     struct tm* mTime = localtime(&time_value);
+
     unsigned int hour = mTime->tm_hour;
-    if(hour == 0)
-        hour = 12;
-    else if(hour != 12)
-        hour = hour % 12;
-    for(i = 0; i < 4; i++)
-    {
-        if(hour % 2)
-            graphics_fill_circle(ctx, GPoint(122-33*i, 37), RADIUS);
-        hour /= 2;
+    if(clock_is_24h_style()) {
+      for(i = 0; i < 5; i++)
+	graphics_draw_circle(ctx, GPoint(18+26*i, 37), RADIUS);
+      for(i = 0; i < 5; i++)
+      {
+	if(hour % 2)
+	  graphics_fill_circle(ctx, GPoint(122-26*i, 37), RADIUS);
+	hour /= 2;
+      }
+
+    } else {
+      if(hour == 0)
+	hour = 12;
+      else if(hour != 12)
+	hour = hour % 12;
+      for(i = 0; i < 4; i++)
+      {
+	if(hour % 2) {
+	  graphics_fill_circle(ctx, GPoint(122-33*i, 37), RADIUS);
+	} else {
+	  graphics_draw_circle(ctx, GPoint(122-33*i, 37), RADIUS);
+	}
+	hour /= 2;
+      }
     }
+
     unsigned int min = mTime->tm_min;
     if (1 == min) {
       vibes_double_pulse();
     }
     for(i = 0; i < 6; i++)
     {
-        if(min % 2)
+        if(min % 2) {
             graphics_fill_circle(ctx, GPoint(128-23*i, 84), RADIUS);
+	} else {
+            graphics_draw_circle(ctx, GPoint(128-23*i, 84), RADIUS);
+	}
         min /= 2;
     }
+
     unsigned int sec = mTime->tm_sec;
     for(i = 0; i < 6; i++)
     {
-        if(sec % 2)
+        if(sec % 2) {
             graphics_fill_circle(ctx, GPoint(128-23*i, 131), RADIUS);
+	} else {
+            graphics_draw_circle(ctx, GPoint(128-23*i, 131), RADIUS);
+	}
         sec /= 2;
     }
+
     int day_int = mTime->tm_mday;
     char* day_string = "01";
     day_string[1] = '0' + day_int%10;
